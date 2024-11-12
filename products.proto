@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package = "/products";
+
+package products;
+
+message ProductRequest {
+    string product_id = 1;
+    int32 quantity = 2;
+}
+
+message ProductResponse {
+    bool available = 1;
+    string ean = 2;
+    string sku = 3;
+    int32 brut_price = 4;
+    int32 net_price = 5;
+    string additional_info = 6;
+}
+
+service ProductsService {
+    rpc CheckProductsAvailability(ProductRequest) returns (ProductResponse);
+}
